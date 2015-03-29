@@ -70,7 +70,6 @@ public class Stack
 	// displayStack method - displays the stack //
 	public void displayStack()
 	{
-		
 		int elementNumber = 1;
 		
 		if(top == 0)
