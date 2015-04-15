@@ -10,4 +10,4 @@ Examples:
     		Output: The number is 889 and it has 5 holes.
 
 		Input: 9990
-		Output: The number is 9990 and it hsa 4 holes.
+		Output: The number is 9990 and it has 4 holes.
