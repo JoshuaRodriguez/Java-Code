@@ -18,4 +18,14 @@ public class UPCScanner
 	{
 		return item.getUPCCode();
 	}
+	
+	/**
+	 * scans a Product
+	 * @param item Product to scan
+	 * @return UPC Code of the product scanned
+	 */
+	public String scan(String barCode)
+	{
+		return barCode;
+	}
 }

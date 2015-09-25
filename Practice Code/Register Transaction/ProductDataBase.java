@@ -11,7 +11,6 @@ public class ProductDataBase
 		products = new HashMap<String, Product>();
 	}
 	
-	
 	/**
 	 * creates a deep copy of a ProductDataBase object,
 	 * @param copyDataBase ProductDataBase object to copy

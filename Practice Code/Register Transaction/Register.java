@@ -1,6 +1,5 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Register 
 {	
@@ -35,6 +34,10 @@ public class Register
 	{
 		String barCode = barCodeScanner.scan(item);
 		Product itemFromDataBase = storeInventory.getProduct(barCode);
+		
+		if(itemFromDataBase == null)
+			return "No item Found";
+		
 		scannedItems.add(itemFromDataBase);
 		receipt.addTo(itemFromDataBase);
 		return itemFromDataBase.getProductInfo();
@@ -44,10 +47,16 @@ public class Register
 	 * scans an item into the register
 	 * @param barCode UPC Code of the product
 	 * @return displays product name, price, and upc_code
+	 * @throws Exception if item not found throw exception
 	 */
 	public String scanItem(String barCode)
 	{
-		Product itemFromDataBase = storeInventory.getProduct(barCode);
+		
+		Product itemFromDataBase = storeInventory.getProduct(barCodeScanner.scan(barCode));
+		
+		if(itemFromDataBase == null)
+			return "No item Found";
+		
 		scannedItems.add(itemFromDataBase);
 		receipt.addTo(itemFromDataBase);
 		return itemFromDataBase.getProductInfo();
@@ -66,7 +75,7 @@ public class Register
 			grandTotal += item.getPrice();
 		}
 		
-		return receipt.show() + "\nGrand Total: " + new DecimalFormat("#.##").format(grandTotal);
+		return receipt.show() + "\nGrand Total: $" + new DecimalFormat("#.##").format(grandTotal);
 	}
 	
 	/**
