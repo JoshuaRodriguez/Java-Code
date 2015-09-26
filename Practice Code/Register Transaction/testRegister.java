@@ -7,6 +7,7 @@ public class testRegister
 	{
 		Scanner in = new Scanner(System.in);
 		String userInput = "";
+		double paymentAmount = 0.00;
 		
 		// created a database called publixInventory, and added some items to the database
 		
@@ -30,7 +31,11 @@ public class testRegister
 			
 				System.out.println(publixRegister.scanItem(userInput));
 			}
-		
+			
+			System.out.println("Please enter payment amount: ");
+			paymentAmount = in.nextDouble();
+			
+			publixRegister.receivePayment(paymentAmount);
 			System.out.println(publixRegister.closeSale());
 			in.close();
 		}

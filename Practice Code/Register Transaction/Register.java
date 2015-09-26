@@ -75,12 +75,14 @@ public class Register
 			grandTotal += item.getPrice();
 		}
 		
-		return receipt.show() + "\nGrand Total: $" + new DecimalFormat("#.##").format(grandTotal);
+		return receipt.show() + "\nGrand Total: $" + new DecimalFormat("#.##").format(grandTotal)
+				              + "\nCash/Credit: $" + money
+				              + "\nChange: $"      + new DecimalFormat("#.##").format(money - grandTotal);
 	}
 	
 	/**
 	 * closes the current tranasction
-	 * @return sales reciept of all items purchased
+	 * @return sales receipt of all items purchased
 	 */
 	public String closeSale()
 	{
@@ -89,8 +91,16 @@ public class Register
 		return salesReceipt;
 	}
 	
+	public void receivePayment(double pay)
+	{
+		if(pay < grandTotal)
+		money = pay;
+	}
+	
 	private UPCScanner barCodeScanner;
 	private ProductDataBase storeInventory;
 	private ArrayList<Product> scannedItems;
 	private Receipt receipt;
+	private double money;
+	private double grandTotal;
 }
